@@ -55,5 +55,34 @@ namespace HomeShare.DAL
             set { _approuve = value; }
         }
         #endregion
+
+        #region function
+
+        public virtual bool InsererAvis(string txtAvis, int noteAvis, int idMembre, int idBien)
+        {
+            DateTime d = DateTime.Now;
+            bool approuv = false;
+
+            string query = "insert into AvisMembreBien (note, message, idMembre, idBien, DateAvis, Approuve)values (@note, @message, @idMembre, @idBien, @DateAvis, @Approuve) ";
+
+            Dictionary<string, object> valeurs = new Dictionary<string, object>();
+            valeurs.Add("note", noteAvis);
+            valeurs.Add("message", txtAvis);
+            valeurs.Add("idMembre", idMembre);
+            valeurs.Add("idBien", idBien);
+            valeurs.Add("DateAvis", d);
+            valeurs.Add("Approuve", approuv);
+
+            if (GestionConnexion.Instance.saveData(query, GenerateKey.APP, valeurs))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        #endregion
     }
 }

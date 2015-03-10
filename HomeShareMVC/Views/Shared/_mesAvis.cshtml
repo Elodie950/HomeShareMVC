@@ -1,0 +1,9 @@
+﻿@model IEnumerable<HomeShare.DAL.AvisMembreBien>
+
+
+@foreach (HomeShare.DAL.AvisMembreBien a in Model)
+{
+    <p>Note @a.Note/10</p>
+    <br />
+    <p>@a.Message</p>
+}

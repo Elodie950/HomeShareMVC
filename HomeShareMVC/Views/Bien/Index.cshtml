@@ -1,0 +1,36 @@
+﻿@model IEnumerable<HomeShare.DAL.BienEchange>
+
+
+<div class="banner-search">
+    <div class="container">
+            <div class="col-lg-6 col-sm-6">
+                <img src="~/Content/images/logo.jpg" alt="" style="width:100px;"/>
+            
+            </div>
+            <div class="col-lg-5 col-lg-offset-1 col-sm-6 ">
+                <h3>Accès Membre</h3>
+                <button type="button">Deposer une annonce</button>
+            </div>
+    </div>
+</div>
+
+@foreach (var item in Model)
+{
+    <img src="~/Content/images/@Html.DisplayFor(modelItem => item.Photo)" alt="photo du bien"  width="150px;"/>
+    @Html.DisplayFor(modelItem => item.DescCourte)
+    @Html.DisplayFor(modelItem => item.NombrePerson)
+    @Html.DisplayFor(modelItem => item.Pays)
+    @Html.ActionLink("Sélectionner ce bien", "Detail", new { controller = "Bien", id=Html.DisplayFor(modelItem => item.IdBien)})
+    <br/>
+     
+}
+
+
+@*<div class="banner-search">
+    <div class="container">
+       <p>Qui sommes-nous?</p>
+        <p>Charte</p>
+        <p>Contact</p>
+    </div>
+</div>*@
+

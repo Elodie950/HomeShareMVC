@@ -80,6 +80,18 @@ namespace HomeShare.DAL
             Membre m = associe(lesMembres[0]);
             return m;
         }
+        public static Membre getUnMembreParBien(int id)
+        {
+            List<Dictionary<string, object>> lesMembres = GestionConnexion.Instance.getData("select Membre.idMembre, Membre.Nom, Membre.Prenom from Membre inner join BienEchange on BienEchange.idMembre = Membre.idMembre where idBien=" + id);
+            Membre m = new Membre();
+            m.IdMembre = int.Parse(lesMembres[0]["idMembre"].ToString());
+            m.Nom = lesMembres[0]["Nom"].ToString();
+            m.Prenom = lesMembres[0]["Prenom"].ToString();
+
+            return m;
+        }
+          
+
 
         private static Membre associe(Dictionary<string, object> item)
         {
@@ -95,6 +107,22 @@ namespace HomeShare.DAL
                 Password = item["Password"].ToString(),
             };
             return memb;
+        }
+
+        #endregion
+
+        #region Function
+
+        public static Membre AuthentifieMoi(string txtlogin, string txtpass)
+        {
+            List<Dictionary<string, object>> infoMembre = GestionConnexion.Instance.getData("Select * from Membre where Login='" + txtlogin + "' and Password='" + txtpass + "'");
+            Membre retour = null;
+            if (infoMembre.Count > 0)
+            {
+                int idMembre = (int)infoMembre[0]["idMembre"];
+                retour = Membre.getUnMembre(idMembre);
+            }
+            return retour;
         }
 
         #endregion

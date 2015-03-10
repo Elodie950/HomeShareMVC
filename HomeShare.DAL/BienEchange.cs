@@ -27,6 +27,10 @@ namespace HomeShare.DAL
         private string _longitude;
         private int _idMembre;
         private DateTime _dateCreation;
+        private List<AvisMembreBien> _mesAvisApprouv;
+        private List<AvisMembreBien> _mesAvisAtt;
+        private List<Options> _mesOptions;
+
         #endregion
 
         #region Properties
@@ -120,12 +124,111 @@ namespace HomeShare.DAL
             get{return _dateCreation;}
             set{ _dateCreation = value;}
         }
+        public List<AvisMembreBien> MesAvisApprouve
+        {
+            get
+            {
+                if (_mesAvisApprouv == null)
+                {
+                    _mesAvisApprouv = ChargerLesAvisApprouv();
+                }
+                return _mesAvisApprouv;
+            }
+ 
+        }
+
+        public List<AvisMembreBien> MesAvisAtt
+        {
+            get
+            {
+                if (_mesAvisAtt == null)
+                {
+                    _mesAvisAtt = ChargerLesAvisAtt();
+                }
+                return _mesAvisAtt;
+            }
+
+        }
+        public List<Options> MesOptions
+        {
+            get
+            {
+                if (_mesOptions == null)
+                {
+                    _mesOptions = ChargerLesOptions();
+                }
+                return _mesOptions;
+            }
+
+        }
+      
         #endregion
 
         #region Method
+
+        private List<AvisMembreBien> ChargerLesAvisApprouv()
+        {
+            string query = @"select note, message from AvisMembreBien where Approuve = 'true' and idBien ="+ this.IdBien;
+            List<AvisMembreBien> retour = new List<AvisMembreBien>();
+            List<Dictionary<string, object>> mesAvis = GestionConnexion.Instance.getData(query);
+
+            foreach (Dictionary<string, object> item in mesAvis)
+            {
+                AvisMembreBien monAvis = new AvisMembreBien();
+                //monAvis.IdAvis = (int)item["idAvis"];
+                monAvis.Note = (int)item["note"];
+                monAvis.Message = item["message"].ToString();
+                //monAvis.IdMembre = (int)item["idMembre"];
+                //monAvis.IdBien = (int)item["idBien"];
+                //monAvis.DateAvis = (DateTime)item["DateAvis"];
+                //monAvis.Approuve = (bool)item["Approuve"];
+                retour.Add(monAvis);
+            }
+            return retour;
+        }
+
+        private List<AvisMembreBien> ChargerLesAvisAtt()
+        {
+            string query = @"select note, message from AvisMembreBien where Approuve = 'false' and idBien =" + this.IdBien;
+            List<AvisMembreBien> retour = new List<AvisMembreBien>();
+            List<Dictionary<string, object>> mesAvis = GestionConnexion.Instance.getData(query);
+
+            foreach (Dictionary<string, object> item in mesAvis)
+            {
+                AvisMembreBien monAvis = new AvisMembreBien();
+                //monAvis.IdAvis = (int)item["idAvis"];
+                monAvis.Note = (int)item["note"];
+                monAvis.Message = item["message"].ToString();
+                //monAvis.IdMembre = (int)item["idMembre"];
+                //monAvis.IdBien = (int)item["idBien"];
+                //monAvis.DateAvis = (DateTime)item["DateAvis"];
+                //monAvis.Approuve = (bool)item["Approuve"];
+                retour.Add(monAvis);
+            }
+            return retour;
+        }
+
+
+        private List<Options> ChargerLesOptions()
+        {
+            string query = @"select Options.Libelle from Options join OptionsBien on OptionsBien.idOption = Options.idOption where idBien =" + this.IdBien;
+            List<Options> retour = new List<Options>();
+            List<Dictionary<string, object>> mesOptions = GestionConnexion.Instance.getData(query);
+
+            foreach (Dictionary<string, object> item in mesOptions)
+            {
+                Options monOpt = new Options();
+                monOpt.Libelle = item["Libelle"].ToString();
+
+                retour.Add(monOpt);
+            }
+            return retour;
+        }
+
+
         public static List<BienEchange> getAllBienEchange() 
         {
-            List<Dictionary<string, object>> allBien = GestionConnexion.Instance.getData("select * from BienEchange");
+            List<Dictionary<string, object>> allBien = GestionConnexion.Instance.getData("select * from BienEchange where IsEnabled='true'");
             List<BienEchange> mesBien = new List<BienEchange>();
             foreach (Dictionary<string, object> item in allBien) 
             {
@@ -143,6 +246,31 @@ namespace HomeShare.DAL
             BienEchange be = associe(allBien[0]);
             return be;
         }
+
+        public static List<BienEchange> getLastBien()
+        {
+            List<Dictionary<string, object>> allBien = GestionConnexion.Instance.getData("select * from Vue_CinqDernierBiens where IsEnabled='true'");
+            List<BienEchange> mesBien = new List<BienEchange>();
+            foreach (Dictionary<string, object> item in allBien)
+            {
+                BienEchange be = associe(item);
+                mesBien.Add(be);
+            }
+            return mesBien;
+        }
+
+        public static List<BienEchange> getBestBien()
+        {
+            List<Dictionary<string, object>> allBien = GestionConnexion.Instance.getData("select * from Vue_MeilleursAvis where IsEnabled='true'");
+            List<BienEchange> mesBien = new List<BienEchange>();
+            foreach (Dictionary<string, object> item in allBien)
+            {
+                BienEchange be = associe(item);
+                mesBien.Add(be);
+            }
+            return mesBien;
+        }
+
 
         private static BienEchange associe(Dictionary<string, object> item)
         {

@@ -45,6 +45,13 @@ namespace HomeShare.DAL
             return pay;
         }
 
+        public static Pays getUnPaysParBien(int id)
+        {
+            List<Dictionary<string, object>> lesPays = GestionConnexion.Instance.getData("select Pays.idPays, Pays.Libelle from Pays inner join BienEchange on BienEchange.Pays = Pays.idPays where idBien =" + id);
+            Pays pay = associe(lesPays[0]);
+            return pay;
+        }
+
         private static Pays associe(Dictionary<string,object> item)
         {
             Pays p = new Pays()

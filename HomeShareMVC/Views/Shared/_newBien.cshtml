@@ -1,0 +1,16 @@
+﻿@model IEnumerable<HomeShare.DAL.BienEchange>
+
+@foreach (var item in Model)
+{
+    <div class="item active">
+        <div class="row">
+            <div class="col-lg-4"><img src="~/Content/images/@Html.DisplayFor(modelItem => item.Photo)" class="img-responsive" alt="properties" /></div>
+            <div class="col-lg-8">
+                <h5><a href="property-detail.php">@Html.DisplayFor(modelItem => item.Titre)</a></h5>
+                <p class="price">Caution</p>
+                <a href="property-detail.php" class="more">Lire plus</a>
+            </div>
+        </div>
+    </div>
+}
+

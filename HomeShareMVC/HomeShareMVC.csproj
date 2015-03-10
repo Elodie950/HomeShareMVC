@@ -109,24 +109,31 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Areas\Membre\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Membre\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Membre\MembreAreaRegistration.cs" />
+    <Compile Include="Controllers\BienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PaysBienMembre.cs" />
+    <Compile Include="Models\MesListesBiens.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\bootstrap\bootstrap.css" />
-    <Content Include="Content\css\slitslider\custom.css" />
+    <Content Include="Content\css\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\css\owl-carousel\AjaxLoader.gif" />
+    <Content Include="Content\css\owl-carousel\grabbing.png" />
     <Content Include="Content\css\owl-carousel\owl.carousel.css" />
     <Content Include="Content\css\owl-carousel\owl.theme.css" />
-    <Content Include="Content\css\slitslider\style.css" />
+    <Content Include="Content\css\slitslider\css\custom.css" />
+    <Content Include="Content\css\slitslider\css\style.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\images\about.jpg" />
     <Content Include="Content\images\advertisements.jpg" />
@@ -148,12 +155,15 @@
     <Content Include="Content\images\grabbing.png" />
     <Content Include="Content\images\instagram.png" />
     <Content Include="Content\images\linkedin.png" />
+    <Content Include="Content\images\logo.jpg" />
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\maisonSousMarine.jpg" />
     <Content Include="Content\images\properties\1.jpg" />
     <Content Include="Content\images\properties\2.jpg" />
     <Content Include="Content\images\properties\3.jpg" />
     <Content Include="Content\images\properties\4.jpg" />
     <Content Include="Content\images\properties\5.jpg" />
+    <Content Include="Content\images\rockHouse.jpg" />
     <Content Include="Content\images\slider\1.jpg" />
     <Content Include="Content\images\slider\2.jpg" />
     <Content Include="Content\images\slider\3.jpg" />
@@ -171,10 +181,10 @@
     <Content Include="fonts\din.eot" />
     <Content Include="fonts\din.ttf" />
     <Content Include="fonts\din.woff" />
-    <Content Include="Scripts\bootstrap\bootstrap.js" />
-    <Content Include="Scripts\slitslider\jquery.ba-cond.min.js" />
-    <Content Include="Scripts\slitslider\jquery.slitslider.js" />
-    <Content Include="Scripts\slitslider\modernizr.custom.79639.js" />
+    <Content Include="Scripts\bootstrap\js\bootstrap.js" />
+    <Content Include="Scripts\slitslider\js\jquery.ba-cond.min.js" />
+    <Content Include="Scripts\slitslider\js\jquery.slitslider.js" />
+    <Content Include="Scripts\slitslider\js\modernizr.custom.79639.js" />
     <Content Include="Scripts\owl-carousel\owl.carousel.js" />
     <Content Include="Scripts\script.js" />
     <Content Include="Web.config" />
@@ -202,9 +212,18 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\Membre\Views\web.config" />
+    <Content Include="Areas\Membre\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Membre\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Membre\Views\Login\Index.cshtml" />
     <None Include="Project_Readme.html" />
+    <Content Include="Views\Shared\_bestBien.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_bien.cshtml" />
+    <Content Include="Views\Shared\_newBien.cshtml" />
+    <Content Include="Views\Bien\Index.cshtml" />
+    <Content Include="Views\Bien\Detail.cshtml" />
+    <Content Include="Views\Shared\_mesOptions.cshtml" />
+    <Content Include="Views\Shared\_mesAvis.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
