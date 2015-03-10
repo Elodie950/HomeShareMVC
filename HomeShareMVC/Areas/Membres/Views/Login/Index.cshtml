@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container">
+    <div class="spacer">
+        <div class="row">
+            <h2>Connectez-vous</h2>
+            <form action="~/Membres/Login/SeConnecter" method="post">
+                <label>Login </label>
+                <input type="text" name="txtlogin" />
+                <span>*Champs requis</span>
+                <br/>
+                <label>Password</label>
+                <input type="password" name="txtpass" />
+                <span>*Champs requis</span>
+                <br/>
+                <input type="submit" value="Confirmer" />
+                <br/>
+                <span>@ViewBag.error</span>
+            </form>
+        </div>
+    </div>
+</div>
