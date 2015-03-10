@@ -17,7 +17,7 @@ namespace HomeShareMVC.Areas.Membre.Controllers
         [HttpPost]
         public ActionResult SeConnecter(string txtlogin, string txtpass)
         {
- 
+             
         }
 	}
 }
