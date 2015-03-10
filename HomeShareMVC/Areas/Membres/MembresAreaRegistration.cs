@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace HomeShareMVC.Areas.Membre
+namespace HomeShareMVC.Areas.Membres
 {
-    public class MembreAreaRegistration : AreaRegistration 
+    public class MembresAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "Membre";
+                return "Membres";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "Membre_default",
-                "Membre/{controller}/{action}/{id}",
+                "Membres_default",
+                "Membres/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

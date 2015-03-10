@@ -12,6 +12,7 @@ namespace HomeShare.DAL
         private int _idOption;
         private int _idBien;
         private string _valeur;
+       
         #endregion
 
         #region Properties
@@ -30,6 +31,7 @@ namespace HomeShare.DAL
             get { return _valeur; }
             set { _valeur = value; }
         }
+       
         #endregion
 
         #region Method

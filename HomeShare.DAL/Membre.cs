@@ -125,6 +125,31 @@ namespace HomeShare.DAL
             return retour;
         }
 
+        public virtual bool InsererMembre(string txtnom, string txtprenom, string txtemail, int txtPays, string txttel, string txtlogin, string txtpass)
+        {
+
+            string query = "insert into Membre (Nom, Prenom, Email, Pays, Telephone, Login, Password )values ( @nom, @prenom, @email, @pays,  @tel, @login, @pass) ";
+
+            Dictionary<string, object> valeurs = new Dictionary<string, object>();
+            valeurs.Add("nom", txtnom);
+            valeurs.Add("prenom", txtprenom);
+            valeurs.Add("email", txtemail);  
+            valeurs.Add("pays", txtPays);
+            valeurs.Add("tel", txttel);
+            valeurs.Add("login", txtlogin);
+            valeurs.Add("pass", txtpass);
+
+            if (GestionConnexion.Instance.saveData(query, GenerateKey.APP, valeurs))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
         #endregion
     }
 }

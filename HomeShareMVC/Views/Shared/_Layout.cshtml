@@ -84,7 +84,17 @@
             <ul class="pull-right">
                 <li><a href="buysalerent.php">Echanger</a></li>
                 <li><a href="~/Bien/Index">Visiter</a></li>
-                <li><a href="buysalerent.php">Se connecter</a></li>
+                <li>
+                    @if (Session["login"] == null)
+                    {
+                        <a href="/Membres/Login/Index"><i class="fa fa-lock"></i> Se connecter</a>
+                    }
+                    else
+                    {
+                        <a href="/Membres/Login/Logoff"><i class="fa fa-lock"></i> Bienvenue @Session["Login"]</a>
+                    }
+                    </li>
+                <li><a href="~/Membres/Login/Inscription">S'inscrire</a></li>
             </ul>
         </div>
         <!-- #Header Starts -->

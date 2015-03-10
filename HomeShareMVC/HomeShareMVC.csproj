@@ -109,19 +109,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Membre\Models\" />
+    <Folder Include="Areas\Membres\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\Membre\Controllers\LoginController.cs" />
-    <Compile Include="Areas\Membre\MembreAreaRegistration.cs" />
+    <Compile Include="Areas\Membres\MembresAreaRegistration.cs" />
+    <Compile Include="Areas\Membres\Controllers\LoginController.cs" />
     <Compile Include="Controllers\BienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\CustHelper.cs" />
+    <Compile Include="Helper\SessionTools.cs" />
     <Compile Include="Models\PaysBienMembre.cs" />
     <Compile Include="Models\MesListesBiens.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -212,10 +214,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Areas\Membre\Views\web.config" />
-    <Content Include="Areas\Membre\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Membre\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Membre\Views\Login\Index.cshtml" />
+    <Content Include="Areas\Membres\Views\web.config" />
+    <Content Include="Areas\Membres\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Membres\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Membres\Views\Login\Index.cshtml" />
+    <Content Include="Areas\Membres\Views\Login\Inscription.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\_bestBien.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />

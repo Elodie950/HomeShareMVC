@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Inscription";
+}
+
+<div class="container">
+    <div class="spacer">
+        <div class="row">
+            <h2>Inscrivez-vous</h2>
+            <form action="~/Membres/Login/EnrInscr" method="post">
+                <label>Nom </label>
+                <input type="text" name="txtnom" />
+                <span>*Champs requis</span>
+                <br />
+                <label>Prenom </label>
+                <input type="text" name="txtprenom" />
+                <span>*Champs requis</span>
+                <br />
+                <label>E-mail </label>
+                <input type="text" name="txtemail" />
+                <span>*Champs requis</span>
+                <br />
+                <label>Téléphone </label>
+                <input type="text" name="txttel" />
+                <span>*Champs requis</span>
+                <br />
+                <label>Pays </label>
+                <select name="txtPays">
+                    <option value="1">Belgique</option>
+                    <option value="2">France</option>
+                    <option value="3">Italie</option>
+                    <option value="4">Pays-Bas</option>
+                    <option value="5">Luxembourg</option>
+                    <option value="6">Australie</option>
+                    <option value="7">USA</option>
+                    <option value="8">Angleterre</option>
+                    <option value="9">Espagne</option>
+                    <option value="10">Portugal</option>
+                    <option value="11">Islande</option>
+                </select>
+                <br />
+                <label>Login </label>
+                <input type="text" name="txtlogin" />
+                <span>*Champs requis</span>
+                <br />
+                <label>Password </label>
+                <input type="password" name="txtpass" />
+                <span>*Champs requis</span>
+                <br />
+                <label>Confirmez votre password </label>
+                <input type="password" name="txtpass1" />
+                <span>*Champs requis</span>
+                <input type="submit" value="Confirmer" />
+                <br />
+                <span>@ViewBag.Erreur</span>
+            </form>
+        </div>
+    </div>
+</div>
+
